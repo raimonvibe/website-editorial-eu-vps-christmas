@@ -3,12 +3,17 @@
 import React, { useEffect, useState } from 'react';
 
 export default function ChristmasLights() {
-  const [isDark, setIsDark] = useState(false);
+  const [isDark, setIsDark] = useState<boolean | null>(null);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    // Check initial theme
+    // Mark component as mounted
+    setMounted(true);
+
+    // Check initial theme immediately
     const checkTheme = () => {
-      setIsDark(document.documentElement.classList.contains('dark'));
+      const darkMode = document.documentElement.classList.contains('dark');
+      setIsDark(darkMode);
     };
 
     checkTheme();
@@ -22,6 +27,11 @@ export default function ChristmasLights() {
 
     return () => observer.disconnect();
   }, []);
+
+  // Don't render until mounted to avoid SSR mismatch
+  if (!mounted || isDark === null) {
+    return null;
+  }
 
   // Colors based on theme
   const cordColor = isDark ? '#4CAF50' : '#174700';
