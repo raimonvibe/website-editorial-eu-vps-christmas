@@ -3,6 +3,7 @@ import { Open_Sans, Roboto_Slab } from 'next/font/google'
 import '../styles/globals.css'
 import { ThemeProvider } from '@/contexts/ThemeContext'
 import ChristmasLights from '@/components/ChristmasLights'
+import GlobalSnowflakeEffect from '@/components/GlobalSnowflakeEffect'
 
 const openSans = Open_Sans({ 
   subsets: ['latin'],
@@ -78,6 +79,7 @@ export default function RootLayout({
         <ChristmasLights />
 
         <ThemeProvider>
+          <GlobalSnowflakeEffect />
           <div id="wrapper">
             {children}
           </div>
