@@ -170,6 +170,40 @@
   animation-delay: 1.2s;
 }
 
+/* Dark mode Christmas lights - brighter colors for visibility */
+.dark .light_cord {
+  stroke: #4CAF50;
+}
+
+.dark .light_fixture {
+  fill: #66BB6A;
+}
+
+.dark .red_bulb {
+  fill: #FF5252;
+  stroke: #BDBDBD;
+}
+
+.dark .green_bulb {
+  fill: #69F0AE;
+  stroke: #BDBDBD;
+}
+
+.dark .blue_bulb {
+  fill: #448AFF;
+  stroke: #BDBDBD;
+}
+
+.dark .white_bulb {
+  fill: #FFFFFF;
+  stroke: #BDBDBD;
+}
+
+.dark .gold_bulb {
+  fill: #FFD740;
+  stroke: #BDBDBD;
+}
+
 .snowflake {
   pointer-events: none;
   z-index: 1000;
