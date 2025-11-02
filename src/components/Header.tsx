@@ -1,12 +1,17 @@
+'use client';
 import React from 'react'
 import Link from 'next/link'
 import DarkModeToggle from './DarkModeToggle'
+import { useSnowflakeEffect } from '../hooks/useSnowflakeEffect'
 
 interface HeaderProps {
   title?: string;
 }
 
 export default function Header({ title = "Raimonvibe" }: HeaderProps) {
+  // Add snowflake effect to social media icon links
+  useSnowflakeEffect('.icons .icon');
+
   return (
     <header id="header">
       <Link href="/" className="logo">

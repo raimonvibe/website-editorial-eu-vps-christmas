@@ -2,12 +2,16 @@
 import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { useTheme } from '../contexts/ThemeContext'
+import { useSnowflakeEffect } from '../hooks/useSnowflakeEffect'
 
 import SidebarProjects from './SidebarProjects'
 
 export default function Sidebar() {
   const { resolvedTheme } = useTheme()
   const [openDropdowns, setOpenDropdowns] = useState<Set<string>>(new Set());
+
+  // Add snowflake effect to navigation links
+  useSnowflakeEffect('#menu a, #menu .opener');
 
   useEffect(() => {
     const $ = require('jquery');

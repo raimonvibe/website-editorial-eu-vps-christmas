@@ -2644,4 +2644,36 @@ button,
     color: rgb(243 244 246/var(--tw-text-opacity,1))
 }
 
+/* Snowflake Effect Styles */
+.snowflake {
+  pointer-events: none;
+  z-index: 1000;
+  position: absolute;
+  top: -10px;
+  font-size: 20px;
+  color: white;
+  user-select: none;
+}
+
+.snowflake-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+@keyframes snowfall {
+  0% {
+    top: -10px;
+    opacity: 1;
+  }
+  100% {
+    top: 100%;
+    opacity: 0;
+  }
+}
+
 
