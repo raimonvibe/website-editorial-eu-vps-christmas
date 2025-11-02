@@ -171,37 +171,44 @@
 }
 
 /* Dark mode Christmas lights - brighter colors for visibility */
-.dark .light_cord {
-  stroke: #4CAF50;
+:is(.dark) .light_cord,
+html.dark .light_cord {
+  stroke: #4CAF50 !important;
 }
 
-.dark .light_fixture {
-  fill: #66BB6A;
+:is(.dark) .light_fixture,
+html.dark .light_fixture {
+  fill: #66BB6A !important;
 }
 
-.dark .red_bulb {
-  fill: #FF5252;
-  stroke: #BDBDBD;
+:is(.dark) .red_bulb,
+html.dark .red_bulb {
+  fill: #FF5252 !important;
+  stroke: #BDBDBD !important;
 }
 
-.dark .green_bulb {
-  fill: #69F0AE;
-  stroke: #BDBDBD;
+:is(.dark) .green_bulb,
+html.dark .green_bulb {
+  fill: #69F0AE !important;
+  stroke: #BDBDBD !important;
 }
 
-.dark .blue_bulb {
-  fill: #448AFF;
-  stroke: #BDBDBD;
+:is(.dark) .blue_bulb,
+html.dark .blue_bulb {
+  fill: #448AFF !important;
+  stroke: #BDBDBD !important;
 }
 
-.dark .white_bulb {
-  fill: #FFFFFF;
-  stroke: #BDBDBD;
+:is(.dark) .white_bulb,
+html.dark .white_bulb {
+  fill: #FFFFFF !important;
+  stroke: #BDBDBD !important;
 }
 
-.dark .gold_bulb {
-  fill: #FFD740;
-  stroke: #BDBDBD;
+:is(.dark) .gold_bulb,
+html.dark .gold_bulb {
+  fill: #FFD740 !important;
+  stroke: #BDBDBD !important;
 }
 
 .snowflake {
