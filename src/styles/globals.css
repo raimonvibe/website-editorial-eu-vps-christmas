@@ -2647,9 +2647,9 @@ button,
 /* Snowflake Effect Styles */
 .snowflake {
   pointer-events: none;
-  z-index: 1000;
+  z-index: 1;
   position: absolute;
-  top: -10px;
+  top: 0;
   font-size: 20px;
   color: white;
   user-select: none;
@@ -2665,9 +2665,19 @@ button,
   pointer-events: none;
 }
 
+/* Ensure buttons can contain snowflakes - only apply to non-positioned elements */
+.button:not([style*="position"]),
+button:not([style*="position"]),
+input[type="submit"]:not([style*="position"]),
+input[type="button"]:not([style*="position"]),
+a.button:not([style*="position"]) {
+  position: relative;
+  overflow: hidden;
+}
+
 @keyframes snowfall {
   0% {
-    top: -10px;
+    top: 0;
     opacity: 1;
   }
   100% {

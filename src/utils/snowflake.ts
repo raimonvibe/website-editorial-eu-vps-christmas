@@ -1,49 +1,60 @@
 /**
- * Creates a single snowflake element that falls from a button
+ * Creates a single snowflake element that falls within a button
  * @param button - The HTMLElement to spawn snowflakes from
  */
 export function createSnowflake(button: HTMLElement): void {
+  // Ensure button has proper positioning for contained snowflakes
+  const currentPosition = window.getComputedStyle(button).position;
+  if (currentPosition === 'static') {
+    button.style.position = 'relative';
+  }
+  button.style.overflow = 'hidden';
+
   const snowflake = document.createElement('div');
   snowflake.textContent = '❄';
   snowflake.style.position = 'absolute';
   snowflake.style.pointerEvents = 'none';
-  snowflake.style.zIndex = '1000';
+  snowflake.style.zIndex = '1';
   snowflake.style.color = 'white';
   snowflake.style.userSelect = 'none';
 
-  // Random starting position above the button
-  const buttonRect = button.getBoundingClientRect();
-  const randomX = Math.random() * buttonRect.width;
-  snowflake.style.left = `${randomX}px`;
-  snowflake.style.top = '-10px';
+  // Get button dimensions (use offsetWidth/offsetHeight for consistent sizing)
+  const buttonWidth = button.offsetWidth;
+  const buttonHeight = button.offsetHeight;
 
-  // Random size and opacity
-  const size = Math.random() * 10 + 10; // 10-20px
+  // Random starting position at the top of the button
+  const randomX = Math.random() * (buttonWidth - 20); // Account for snowflake size
+  snowflake.style.left = `${randomX}px`;
+  snowflake.style.top = '0px';
+
+  // Random size and opacity (smaller sizes for buttons)
+  const size = Math.random() * 8 + 8; // 8-16px
   snowflake.style.fontSize = `${size}px`;
   snowflake.style.opacity = String(Math.random() * 0.5 + 0.5); // 0.5-1.0
 
   // Add transition for smooth animation
   snowflake.style.transition = 'all 2s ease-in';
 
-  // Check if button has a snowflake container, otherwise append to button
-  const container = button.querySelector('.snowflake-container') || button;
-  container.appendChild(snowflake);
+  // Append snowflake directly to button
+  button.appendChild(snowflake);
 
   // Trigger animation after a small delay
   setTimeout(() => {
-    const fallDistance = buttonRect.height + 50;
-    snowflake.style.top = `${fallDistance}px`;
+    // Fall to the bottom of the button
+    snowflake.style.top = `${buttonHeight}px`;
 
-    // Add random horizontal drift
-    const drift = Math.random() * 40 - 20; // -20 to 20px
+    // Add small horizontal drift within button bounds
+    const maxDrift = Math.min(20, buttonWidth / 4); // Limit drift to button width
+    const drift = Math.random() * maxDrift * 2 - maxDrift;
     const currentLeft = parseFloat(snowflake.style.left);
-    snowflake.style.left = `${currentLeft + drift}px`;
+    const newLeft = Math.max(0, Math.min(buttonWidth - size, currentLeft + drift));
+    snowflake.style.left = `${newLeft}px`;
   }, 50);
 
   // Remove snowflake after animation completes
   setTimeout(() => {
     snowflake.remove();
-  }, 2000);
+  }, 2100);
 }
 
 /**
