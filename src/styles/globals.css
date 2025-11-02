@@ -53,12 +53,15 @@
 
 #Christmas_Lights {
   object-position: center;
-  height: 40%;
+  height: 100px;
   margin-top: 0;
   margin-bottom: 30px;
-  position: absolute;
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
-  z-index: -2;
+  z-index: 9999;
+  pointer-events: none;
 }
 
 .light_cord {
