@@ -31,7 +31,7 @@
     "autoprefixer": "^10.6.1",
     "eslint": "^10",
     "eslint-config-next": "16.4.2",
-    "postcss": "8.5.28",
+    "postcss": "8.5.32",
     "tailwindcss": "^4.3.3",
     "typescript": "5.9.3"
   },
@@ -47,7 +47,7 @@
     "nanoid": "3.3.19",
     "next": "16.4.2",
     "picomatch": "4.0.7",
-    "postcss": "8.5.28",
+    "postcss": "8.5.32",
     "postcss-selector-parser": "7.1.6",
     "sharp": "0.35.5",
     "typescript": "5.9.3",
