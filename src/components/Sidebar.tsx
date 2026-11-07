@@ -13,13 +13,15 @@ export default function Sidebar() {
   useSnowflakeEffect('#menu a, #menu .opener');
 
   useEffect(() => {
+    // Loaded inside the effect so jQuery only runs in the browser, never during SSR.
+    // eslint-disable-next-line @typescript-eslint/no-require-imports
     const $ = require('jquery');
     const $sidebar = $('#sidebar');
     
     if ($sidebar.find('.toggle').length === 0) {
       $('<a href="#sidebar" class="toggle">Toggle</a>')
         .appendTo($sidebar)
-        .on('click', function(event: any) {
+        .on('click', function(event: { preventDefault(): void; stopPropagation(): void }) {
           event.preventDefault();
           event.stopPropagation();
           $sidebar.toggleClass('inactive');
